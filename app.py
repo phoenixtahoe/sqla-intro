@@ -32,17 +32,17 @@ def createUser():
     return redirect("/users")
 
 @app.route('/users/<int:user_id>')
-def users_show(user_id):
+def showUsers(user_id):
     user = User.query.get_or_404(user_id)
     return render_template('users/show.html', user=user)
 
 @app.route('/users/<int:user_id>/edit')
-def users_edit(user_id):
+def editUser(user_id):
     user = User.query.get_or_404(user_id)
     return render_template('users/edit.html', user=user)
 
 @app.route('/users/<int:user_id>/edit', methods=["POST"])
-def users_update(user_id):
+def updateUser(user_id):
     user = User.query.get_or_404(user_id)
     user.first_name = request.form['first_name']
     user.last_name = request.form['last_name']
@@ -54,7 +54,7 @@ def users_update(user_id):
     return redirect("/users")
 
 @app.route('/users/<int:user_id>/delete', methods=["POST"])
-def users_destroy(user_id):
+def deleteUser(user_id):
     user = User.query.get_or_404(user_id)
     db.session.delete(user)
     db.session.commit()
