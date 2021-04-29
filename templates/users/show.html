@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="">
+
+  <div class="">
+    <h1>{{ user.first_name + " " + user.last_name  }}</h1>
+    <img class="col-sm-4"src="{{ user.image_url }}" class="img-fluid">
+    <div class="mt-2">
+        <form>
+            <button class="btn btn-primary btn-sm" formaction="/users/{{ user.id }}/edit" formmethod="GET">Edit</button>
+            <button class="btn btn-danger btn-sm" formaction="/users/{{ user.id }}/delete" formmethod="POST">Delete</button>
+          </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
